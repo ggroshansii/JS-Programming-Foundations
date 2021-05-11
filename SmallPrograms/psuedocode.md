@@ -15,6 +15,7 @@ SET iterator = 1
 SET concatenatedString = ""
 WHILE iterator < arr.length
   concatenatedString = concatenatedString + value within arr at space 'iterator'
+  iterator = iterator + 1
 *Return the value of concatenatedString
 END
 
@@ -27,5 +28,6 @@ SET newArr = []
 WHILE iterator < arr.length
   IF iterator == 1 OR iterator IS NOT divisible by 2 with a remainder of 0
     Put the value within arr at the space 'iterator' in the newArr
+  iterator = iterator + 1
 *Return newArr
 END
