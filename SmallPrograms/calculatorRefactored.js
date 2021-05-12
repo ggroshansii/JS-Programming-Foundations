@@ -1,15 +1,15 @@
 const readline = require('readline-sync');
 
 function prompt(str) {
-  console.log(`=> ${str}`)
+  console.log(`=> ${str}`);
 }
 
 function invalidNumber(num) {
-  return Number.isNaN(Number(num)) || num.trim() === ""
+  return Number.isNaN(Number(num)) || num.trim() === "";
 }
 
 function invalidOperation(input) {
-  switch(input) {
+  switch (input) {
     case "1":
       return false;
     case "2":
@@ -30,7 +30,7 @@ let number1 = readline.question();
 
 while (invalidNumber(number1)) {
   console.log("You have entered an invalid number, please try again");
-  number1 = readline.question()
+  number1 = readline.question();
 }
 
 prompt("What's the second number?");
@@ -45,12 +45,12 @@ prompt("Select an operation:\n 1) Add, 2) Subtract, 3) Multiply, 4) Divide");
 let operation = readline.question();
 
 while (invalidOperation(operation)) {
-  console.log("You have entered an invalid operation, please try again")
+  console.log("You have entered an invalid operation, please try again");
   operation = readline.question();
 }
 
 let output;
-switch(operation) {
+switch (operation) {
   case "1":
     output = Number(number1) + Number(number2);
     break;
