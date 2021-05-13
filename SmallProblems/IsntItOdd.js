@@ -1,5 +1,5 @@
 function isOdd(num) {
-  return (Math.abs(num) % 2 !== 0) ? true : false;
+  return Math.abs(num) % 2 !== 0;
 }
 
 
