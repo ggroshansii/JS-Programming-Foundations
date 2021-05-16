@@ -5,6 +5,10 @@ function prompt(str) {
   console.log(`=> ${str}`);
 }
 
+function messages(message, lang) {
+  return json[lang][message];
+}
+
 function invalidNumber(num) {
   return Number.isNaN(Number(num)) || num.trim() === "";
 }
@@ -23,26 +27,27 @@ function invalidOperation(input) {
       return true;
   }
 }
+console.log("Language: 1) English, 2) Spanish?");
+let languageSelection = readline.question();
+let lang = (languageSelection === '1') ? 'en' : 'es';
 
-console.log(json['welcome']);
+console.log(messages('welcome', lang));
 
-let calculate = true;
+while (true) {
 
-while (calculate) {
-
-  prompt(json['number1']);
+  prompt(messages('number1', lang));
   let number1 = readline.question();
 
   while (invalidNumber(number1)) {
-    console.log(json['invalidNumber']);
+    console.log(messages('invalidNumber', lang));
     number1 = readline.question();
   }
 
-  prompt(json['number2']);
+  prompt(messages('number2', lang));
   let number2 = readline.question();
 
   while (invalidNumber(number2)) {
-    console.log(json['invalidNumber']);
+    console.log(messages('invalidNumber', lang));
     number2 = readline.question();
   }
 
@@ -50,7 +55,7 @@ while (calculate) {
   let operation = readline.question();
 
   while (invalidOperation(operation)) {
-    console.log(json['invalidOperation']);
+    console.log(messages('invalidOperation', lang));
     operation = readline.question();
   }
 
@@ -73,9 +78,10 @@ while (calculate) {
   prompt(`The output is ${output}`);
 
 
-  prompt(json['anotherCalc']);
+  prompt(messages('anotherCalc', lang));
   let anotherCalc = readline.question();
 
-  if (anotherCalc !== "Y" || anotherCalc !== "y") { break; }
+  if (anotherCalc !== "Y" || anotherCalc !== "y") {
+    break;
+  }
 }
-

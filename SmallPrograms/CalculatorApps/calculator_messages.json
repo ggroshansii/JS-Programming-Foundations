@@ -1,11 +1,21 @@
 {
 
-"welcome" : "Welcome to Calculator",
-"number1" : "What's the first number?",
-"number2" : "What's the second number?",
-"invalidNumber" : "You have entered an invalid number, please try again",
-"invalidOperation" : "You have entered an invalid operation, please try again",
-"operation" : "Select an operation:\n 1) Add, 2) Subtract, 3) Multiply, 4) Divide",
-"anotherCalc" : "Another calculation? Type 'Y' or 'N'"
-
+"en" : {
+        "welcome": "Welcome to Calculator",
+        "number1": "What's the first number?",
+        "number2": "What's the second number?",
+        "invalidNumber": "You have entered an invalid number, please try again",
+        "invalidOperation": "You have entered an invalid operation, please try again",
+        "operation": "Select an operation:\n 1) Add, 2) Subtract, 3) Multiply, 4) Divide",
+        "anotherCalc": "Another calculation? Type 'Y' or 'N'"
+    },
+"es": {
+        "welcome": "Bienvenido a Calculadora",
+        "number1": "¿Cuál es el primer número?",
+        "number2": "¿Cuál es el segundo número?",
+        "invalidNumber": "Has introducido un número no válido, inténtalo de nuevo.",
+        "invalidOperation": "Ha introducido una operación no válida, inténtelo de nuevo.",
+        "operation": "Seleccione una operación:\n 1) Sumar, 2) Restar, 3) Multiplicar, 4) Dividir",
+        "anotherCalc": "¿Otro cálculo? Escriba 'Y' o 'N'"
+    }
 }
