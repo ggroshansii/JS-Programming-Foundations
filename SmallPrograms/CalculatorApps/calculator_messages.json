@@ -1,0 +1,11 @@
+{
+
+"welcome" : "Welcome to Calculator",
+"number1" : "What's the first number?",
+"number2" : "What's the second number?",
+"invalidNumber" : "You have entered an invalid number, please try again",
+"invalidOperation" : "You have entered an invalid operation, please try again",
+"operation" : "Select an operation:\n 1) Add, 2) Subtract, 3) Multiply, 4) Divide",
+"anotherCalc" : "Another calculation? Type 'Y' or 'N'"
+
+}
