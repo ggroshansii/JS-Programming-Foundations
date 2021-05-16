@@ -25,6 +25,11 @@ function invalidOperation(input) {
 
 console.log('Welcome to Calculator!');
 
+let calculate = true;
+
+while(calculate) {
+
+
 prompt("What's the first number?");
 let number1 = readline.question();
 
@@ -66,3 +71,16 @@ switch (operation) {
 }
 
 prompt(`The output is ${output}`);
+
+
+prompt('Another calculation? Type "Y" or "N"');
+let anotherCalc = readline.question();
+
+if (anotherCalc === "Y") {
+  continue;
+} else {
+  calculate = false;
+}
+
+
+}
