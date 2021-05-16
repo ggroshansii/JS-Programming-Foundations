@@ -1,0 +1,6 @@
+{
+    "welcome" : "Welcome to the Loan Calculator",
+    "loanAmount" : "Please enter the loan amount ($): ",
+    "APR" : "Please enter the Annual Percentage Rate (%): ",
+    "loanDuration" : "Please enter the Loan Duration: "
+}
