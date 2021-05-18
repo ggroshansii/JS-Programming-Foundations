@@ -1,37 +1,40 @@
-const readline = require('readline-sync');
+const readline = require("readline-sync");
 const json = require("./LoanCalculatorMessages.json");
+let monthlyPayment;
 
-/////////////////////////////////////////////
 function prompt(str) {
-    return console.log(`==> ${str}`);
+  return console.log(`==> ${str}`);
 }
 
 function message(message) {
-    return json[message];
+  return json[message];
 }
 
-function monthlyInterestRate(APR, loanDuration){
-    if (APR.split("").includes('%')){
-        APR = APR.split("").splice(0, APR.length-1).join("");
-    }
-    return `${Number(APR) / Number(loanDuration)}`;
+function findMonthlyInterestRate(APR) {
+  if (APR.split("").includes("%")) {
+    APR = Number(
+      APR.split("")
+        .splice(0, APR.length - 1)
+        .join("")
+    );
+  }
+  return Number(APR) / 100 / 12;
 }
 
-function monthlyPayment(loanAmount, loanDuration) {
-    let monthly = (Number(loanAmount) * monthlyInterestRate(APR, loanDuration)) / (1 - Math.pow(1 + (monthlyInterestRate(APR, loanDuration)), Number((-loanDuration))));
-    return monthly;
+function findMonthlyPayment() {
+  if (Number(APR) == 0) {
+    return loanAmount / loanDuration;
+  } else if (Number(APR) > 0) {
+    return loanAmount * findMonthlyInterestRate(APR) / (1 - Math.pow(1 + findMonthlyInterestRate(APR), -loanDuration));
+  }
 }
 
-console.log(message("welcome"));
-
+console.log(message("Welcome"));
 prompt(message("loanAmount"));
-let loanAmount = readline.question();
-
+let loanAmount = Number(readline.question());
 prompt(message("APR"));
 let APR = readline.question();
-
 prompt(message("loanDuration"));
-let loanDuration = readline.question();
+let loanDuration = Number(readline.question());
 
-console.log(monthlyInterestRate(APR, loanDuration));
-console.log(monthlyPayment(loanAmount, loanDuration));
+console.log(findMonthlyPayment());
