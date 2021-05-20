@@ -17,20 +17,7 @@ function randomPick() {
   }
 }
 
-let computerChoice = randomPick();
-
-// let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
-// let computerChoice = VALID_CHOICES[randomIndex];
-
-while (true) {
-  prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
-  let userChoice = readline.question();
-
-  while (!VALID_CHOICES.includes(userChoice.toLowerCase())) {
-    prompt("Invalid choice, please try again");
-    userChoice = readline.question();
-  }
-
+function displayWinner(userChoice, computerChoice) {
   prompt(`You chose ${userChoice}, computer chose ${computerChoice}`);
 
   if (
@@ -38,7 +25,7 @@ while (true) {
     (userChoice === "paper" && computerChoice === "rock") ||
     (userChoice === "scissors" && computerChoice === "paper")
   ) {
-    prompt("You win!");
+    prompt("You Win!")
   } else if (
     (userChoice === "rock" && computerChoice === "paper") ||
     (userChoice === "paper" && computerChoice === "scissors") ||
@@ -48,6 +35,22 @@ while (true) {
   } else {
     prompt("It's a tie");
   }
+}
+
+
+while (true) {
+
+  let computerChoice = randomPick();
+
+  prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
+  let userChoice = readline.question();
+
+  while (!VALID_CHOICES.includes(userChoice.toLowerCase())) {
+    prompt("Invalid choice, please try again");
+    userChoice = readline.question();
+  }
+
+  displayWinner(userChoice, computerChoice);
 
   let playAgain;
   do {
