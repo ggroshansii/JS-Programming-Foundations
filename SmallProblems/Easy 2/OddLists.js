@@ -2,11 +2,16 @@
 function oddities(arr) {
   let oddIndices = [];
 
-  for (let index = 0; index < arr.length; index++) {
-    if (index === 0 || index % 2 === 0) {
-      oddIndices.push(arr[index]);
+  if (typeof arr === "object") {
+    for (let index = 0; index < arr.length; index++) {
+      if (index === 0 || index % 2 === 0) {
+        oddIndices.push(arr[index]);
+      }
     }
+  } else {
+    return "Argument is not an array";
   }
+
   return oddIndices;
 }
 
