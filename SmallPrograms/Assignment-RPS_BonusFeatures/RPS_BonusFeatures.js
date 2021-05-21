@@ -41,7 +41,7 @@ function findFullNameOfChoice(userChoice) {
   }
 }
 
-function displayWinner(userChoice, computerChoice) {
+function displayRoundWinner(userChoice, computerChoice) {
   prompt(
     `You chose ${findFullNameOfChoice(
       userChoice
@@ -72,42 +72,19 @@ function displayWinner(userChoice, computerChoice) {
   ) {
     prompt("You Win this round!");
     userScore++;
-  } else if (
-    ((userChoice === "rock" || userChoice === "r") &&
-      computerChoice === "paper") ||
-    ((userChoice === "rock" || userChoice === "r") &&
-      computerChoice === "spock") ||
-    ((userChoice === "paper" || userChoice === "p") &&
-      computerChoice === "scissors") ||
-    ((userChoice === "paper" || userChoice === "p") &&
-      computerChoice === "lizard") ||
-    ((userChoice === "scissors" || userChoice === "sc") &&
-      computerChoice === "rock") ||
-    ((userChoice === "scissors" || userChoice === "sc") &&
-      computerChoice === "spock") ||
-    ((userChoice === "spock" || userChoice === "sp") &&
-      computerChoice === "paper") ||
-    ((userChoice === "spock" || userChoice === "sp") &&
-      computerChoice === "lizard") ||
-    ((userChoice === "lizard" || userChoice === "l") &&
-      computerChoice === "rock") ||
-    ((userChoice === "lizard" || userChoice === "l") &&
-      computerChoice === "scissors")
-  ) {
+  } else if (userChoice === computerChoice) {
+    prompt("This round is a tie");
+  } else {
     prompt("Computer wins this round!");
     computerScore++;
-  } else {
-    prompt("This round is a tie");
   }
 }
 
 function grandWinner() {
   if (computerScore === 5) {
-    console.log("\n \n \n");
-    return `The Computer won! Score: Comuter:${computerScore} User:${userScore}`;
+    return `\n\n\nThe Computer won! Score: Computer:${computerScore} User:${userScore}`;
   } else if (userScore === 5) {
-    console.log("\n \n \n");
-    return `The User won! Score: Comuter:${computerScore} User:${userScore}`;
+    return `\n\n\nThe User won! Score: Computer:${computerScore} User:${userScore}`;
   }
 }
 
@@ -127,14 +104,13 @@ while (computerScore < 5 && userScore < 5) {
     userChoice = readline.question();
   }
 
-  displayWinner(userChoice, computerChoice);
-
-  grandWinner();
+  displayRoundWinner(userChoice, computerChoice);
 
   let playAgain;
   if (grandWinner() === undefined) {
     continue;
   } else {
+    console.log(grandWinner());
     prompt("Would you like to play again? y/n");
     playAgain = readline.question();
     if (playAgain.toLowerCase() === "y") {
