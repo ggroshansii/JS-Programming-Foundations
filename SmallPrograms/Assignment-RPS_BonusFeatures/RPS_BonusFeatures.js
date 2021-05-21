@@ -36,6 +36,8 @@ function findFullNameOfChoice(userChoice) {
         case 'sp':
           return "spock";
       }
+    }  else {
+      return userChoice;
     }
 }
 
@@ -55,7 +57,8 @@ function displayWinner(userChoice, computerChoice) {
     ((userChoice === "lizard" || userChoice === 'l') && computerChoice === "spock")
 
   ) {
-    prompt("You Win!")
+    prompt("You Win this round!")
+    userScore++;
   } else if (
     ((userChoice === "rock" || userChoice === 'r') && computerChoice === "paper") ||
     ((userChoice === "rock" || userChoice === 'r') && computerChoice === "spock") ||
@@ -68,16 +71,29 @@ function displayWinner(userChoice, computerChoice) {
     ((userChoice === "lizard" || userChoice === 'l') && computerChoice === "rock") ||
     ((userChoice === "lizard" || userChoice === 'l') && computerChoice === "scissors")
   ) {
-    prompt("Computer wins!");
+    prompt("Computer wins this round!");
+    computerScore++;
   } else {
-    prompt("It's a tie");
+    prompt("This round is a tie");
   }
 }
 
+function grandWinner(){
+  if (computerScore === 3 ) {
+    console.log("\n \n \n")
+    return (`The Computer won! Score: Comuter:${computerScore} User:${userScore}`);
+  } else if (userScore === 3) {
+    console.log("\n \n \n")
+    return (`The User won! Score: Comuter:${computerScore} User:${userScore}`);
+  }
+}
 
-while (true) {
+let computerScore = 0;
+let userScore = 0;
+while (computerScore < 3 && userScore < 3) {
 
   let computerChoice = randomPick();
+
 
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
   let userChoice = readline.question();
@@ -89,15 +105,20 @@ while (true) {
 
   displayWinner(userChoice, computerChoice);
 
-  let playAgain;
-  do {
-    prompt("Would you like to play again? Y/N");
-    playAgain = readline.question();
-  } while ((playAgain.toLowerCase() !== "n") && (playAgain.toLowerCase() !== "y"));
+  grandWinner();
 
-  if (playAgain.toLowerCase() === "n") {
-    break;
-  } else if (playAgain.toLowerCase() === "y") {
+  let playAgain;
+  if (grandWinner() === undefined){
     continue;
+  } else {
+    prompt("Would you like to play again? y/n");
+    playAgain = readline.question();
+      if (playAgain.toLowerCase() === 'y') {
+        computerScore = 0;
+        userScore = 0;
+        continue;
+      } else {
+        break;
+      }
   }
 }
