@@ -1,6 +1,9 @@
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
-const alt_VALID_CHOICES = ["r", "p", "sc", "l", "sp"];
+const ALT_VALID_CHOICES = ["r", "p", "sc", "l", "sp"];
+
+let computerScore = 0;
+let userScore = 0;
 
 function prompt(string) {
   return console.log(`===> ${string}`);
@@ -42,33 +45,19 @@ function findFullNameOfChoice(userChoice) {
 }
 
 function displayRoundWinner(userChoice, computerChoice) {
-  prompt(
-    `You chose ${findFullNameOfChoice(
-      userChoice
-    )}, computer chose ${computerChoice}`
-  );
+  prompt(`You chose ${findFullNameOfChoice(userChoice)}, computer chose ${computerChoice}`);
 
   if (
-    ((userChoice === "rock" || userChoice === "r") &&
-      computerChoice === "scissors") ||
-    ((userChoice === "rock" || userChoice === "r") &&
-      computerChoice === "lizard") ||
-    ((userChoice === "paper" || userChoice === "p") &&
-      computerChoice === "rock") ||
-    ((userChoice === "paper" || userChoice === "p") &&
-      computerChoice === "spock") ||
-    ((userChoice === "scissors" || userChoice === "sc") &&
-      computerChoice === "paper") ||
-    ((userChoice === "scissors" || userChoice === "sc") &&
-      computerChoice === "lizard") ||
-    ((userChoice === "spock" || userChoice === "sp") &&
-      computerChoice === "scissors") ||
-    ((userChoice === "spock" || userChoice === "sp") &&
-      computerChoice === "rock") ||
-    ((userChoice === "lizard" || userChoice === "l") &&
-      computerChoice === "paper") ||
-    ((userChoice === "lizard" || userChoice === "l") &&
-      computerChoice === "spock")
+    ((userChoice === "rock" || userChoice === "r") && computerChoice === "scissors") ||
+    ((userChoice === "rock" || userChoice === "r") && computerChoice === "lizard") ||
+    ((userChoice === "paper" || userChoice === "p") && computerChoice === "rock") ||
+    ((userChoice === "paper" || userChoice === "p") && computerChoice === "spock") ||
+    ((userChoice === "scissors" || userChoice === "sc") && computerChoice === "paper") ||
+    ((userChoice === "scissors" || userChoice === "sc") && computerChoice === "lizard") ||
+    ((userChoice === "spock" || userChoice === "sp") && computerChoice === "scissors") ||
+    ((userChoice === "spock" || userChoice === "sp") && computerChoice === "rock") ||
+    ((userChoice === "lizard" || userChoice === "l") && computerChoice === "paper") ||
+    ((userChoice === "lizard" || userChoice === "l") && computerChoice === "spock")
   ) {
     prompt("You Win this round!");
     userScore++;
@@ -84,12 +73,10 @@ function grandWinner() {
   if (computerScore === 5) {
     return `\n\n\nThe Computer won! Score: Computer:${computerScore} User:${userScore}`;
   } else if (userScore === 5) {
-    return `\n\n\nThe User won! Score: Computer:${computerScore} User:${userScore}`;
+    return `\n\n\nYou won! Score: Computer:${computerScore} User:${userScore}`;
   }
 }
 
-let computerScore = 0;
-let userScore = 0;
 while (computerScore < 5 && userScore < 5) {
   let computerChoice = randomPick();
 
@@ -98,7 +85,7 @@ while (computerScore < 5 && userScore < 5) {
 
   while (
     !VALID_CHOICES.includes(userChoice.toLowerCase()) &&
-    !alt_VALID_CHOICES.includes(userChoice.toLowerCase())
+    !ALT_VALID_CHOICES.includes(userChoice.toLowerCase())
   ) {
     prompt("Invalid choice, please try again");
     userChoice = readline.question();
@@ -111,8 +98,9 @@ while (computerScore < 5 && userScore < 5) {
     continue;
   } else {
     console.log(grandWinner());
-    prompt("Would you like to play again? y/n");
+    console.log('\nWould you like to play again? If so, type "y"');
     playAgain = readline.question();
+    
     if (playAgain.toLowerCase() === "y") {
       computerScore = 0;
       userScore = 0;
