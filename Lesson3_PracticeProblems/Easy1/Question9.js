@@ -6,7 +6,7 @@ let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Bambam", "Pebbles"];
 //How can we add multiple items to our array? ('Dino' and 'Hoppy')
 
 
-//my solution
+//my solution / acutal solution
 
 flintstones.push("Dino", "Hoppy");
 console.log(flintstones);
