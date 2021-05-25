@@ -7,7 +7,7 @@ let advice = "Few things in life are as important as house training your pet din
 // => 'Few things in life are as important as '
 
 
-//my solution
+//my solution / actual solution
 
 
 console.log(advice.slice(0, advice.indexOf("house")))
